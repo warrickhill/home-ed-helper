@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome to Vue</title>
+        <script src="https://unpkg.com/vue"></script>
+        <link href="fonts/stylesheet.css" rel="stylesheet">
+        <style>
+            html {
+                font-size: 10px;
+            }
+            body {
+                background-color: linen;
+            }
+            #app {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100vw;
+                height: 100vh;
+            }
+            #edit textarea {
+                width: 65vw;
+                height: 10vh;
+            }
+            #print {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                font-family: 'KG Primary Dots Lined';
+                padding: 10vh 10vw;
+                text-align: center;
+            }
+            #print p {
+                margin: 15px;
+            }
+            @media print {
+                body * {
+                    visibility: hidden;
+                }
+                #print,
+                #print * {
+                    visibility: visible;
+                }
+                #print {
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div id="header">
+                <h1>Dot Printer</h1>
+            </div>
+            <div id="edit">
+                <textarea v-model="message"></textarea>
+            </div>
+            <div id="print">
+                <p v-for="line in lines" :style="style">{{ line }}</p>
+            </div>
+        </div>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Edit Me!'
+                },
+                computed: {
+                    // a computed getter
+                    lines: function () {
+                        // `this` points to the vm instance
+                        return this
+                            .message
+                            .split("\n")
+                    },
+                    style: function () {
+                        const fontSize = Math.min(20, (100 / this.lines.reduce((max, str) => {
+                            console.log(Math.max(max, str.length));
+                            return Math.max(max, str.length)
+                        }, 1)))
+                        return {
+                            fontSize: fontSize + 'vw'
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

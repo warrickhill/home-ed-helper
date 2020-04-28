@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'KG Primary Dots Lined';
+    src: url('KGPrimaryDotsLined.eot');
+    src: url('KGPrimaryDotsLined.eot?#iefix') format('embedded-opentype'),
+        url('KGPrimaryDotsLined.woff2') format('woff2'),
+        url('KGPrimaryDotsLined.woff') format('woff'),
+        url('KGPrimaryDotsLined.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KG Primary Dots Lined Alt';
+    src: url('KGPrimaryDotsLinedAlt.eot');
+    src: url('KGPrimaryDotsLinedAlt.eot?#iefix') format('embedded-opentype'),
+        url('KGPrimaryDotsLinedAlt.woff2') format('woff2'),
+        url('KGPrimaryDotsLinedAlt.woff') format('woff'),
+        url('KGPrimaryDotsLinedAlt.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KG Primary Dots';
+    src: url('KGPrimaryDots.eot');
+    src: url('KGPrimaryDots.eot?#iefix') format('embedded-opentype'),
+        url('KGPrimaryDots.woff2') format('woff2'),
+        url('KGPrimaryDots.woff') format('woff'),
+        url('KGPrimaryDots.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
