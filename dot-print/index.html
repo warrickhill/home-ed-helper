@@ -23,6 +23,13 @@
                 width: 65vw;
                 height: 10vh;
             }
+            #font {
+                width: 75vw;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-evenly;
+            }
             #print {
                 flex: 1;
                 display: flex;
@@ -61,6 +68,20 @@
             <div id="edit">
                 <textarea v-model="message"></textarea>
             </div>
+            <div id="font">
+                <div>
+                    <input type="radio" id="dot" value="KG Primary Dots" v-model="font" selected>
+                    <label for="dot">Dots</label>
+                </div>
+                <div>
+                    <input type="radio" id="dot-line" value="KG Primary Dots Lined" v-model="font">
+                    <label for="dot-line">Dots Lined</label>
+                </div>
+                <div>
+                    <input type="radio" id="dot-line-alt" value="KG Primary Dots Lined Alt" v-model="font">
+                    <label for="dot-line-alt">Dots Lined Alt</label>
+                </div>
+            </div>
             <div id="print">
                 <p v-for="line in lines" :style="style">{{ line }}</p>
             </div>
@@ -69,7 +90,8 @@
             var app = new Vue({
                 el: '#app',
                 data: {
-                    message: 'Edit Me!'
+                    message: 'Edit Me!',
+                    font: 'KG Primary Dots'
                 },
                 computed: {
                     // a computed getter
@@ -80,12 +102,13 @@
                             .split("\n")
                     },
                     style: function () {
-                        const fontSize = Math.min(20, (100 / this.lines.reduce((max, str) => {
+                        const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
                             console.log(Math.max(max, str.length));
                             return Math.max(max, str.length)
                         }, 1)))
                         return {
-                            fontSize: fontSize + 'vw'
+                            fontSize: fontSize + 'vw',
+                            fontFamily: this.font
                         }
                     }
                 }
