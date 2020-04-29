@@ -37,7 +37,6 @@
                 align-items: center;
                 justify-content: center;
                 font-family: 'KG Primary Dots Lined';
-                padding: 10vh 10vw;
                 text-align: center;
             }
             #print p {
@@ -103,9 +102,9 @@
                     },
                     style: function () {
                         const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
-                            console.log(Math.max(max, str.length));
-                            return Math.max(max, str.length)
-                        }, 1)))
+                            const shortChar = (str.match(/[ijklfI1\!\^\[\]\{\}\~\`]/g) || []).length;
+                            return Math.max(max, ((str.length * 2) - shortChar) / 2);
+                        }, 1)));
                         return {
                             fontSize: fontSize + 'vw',
                             fontFamily: this.font
