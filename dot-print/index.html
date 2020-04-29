@@ -15,7 +15,6 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
                 width: 100vw;
                 height: 100vh;
             }
@@ -50,6 +49,9 @@
                 #print * {
                     visibility: visible;
                 }
+                #app {
+                    justify-content: center;
+                }
                 #print {
                     position: absolute;
                     display: flex;
@@ -80,6 +82,10 @@
                     <input type="radio" id="dot-line-alt" value="KG Primary Dots Lined Alt" v-model="font">
                     <label for="dot-line-alt">Dots Lined Alt</label>
                 </div>
+                <div>
+                    <input id="scale" v-model="scale">
+                    <label for="scale">Scale</label>
+                </div>
             </div>
             <div id="print">
                 <p v-for="line in lines" :style="style">{{ line }}</p>
@@ -90,7 +96,8 @@
                 el: '#app',
                 data: {
                     message: 'Edit Me!',
-                    font: 'KG Primary Dots'
+                    font: 'KG Primary Dots',
+                    scale: 1
                 },
                 computed: {
                     // a computed getter
@@ -104,7 +111,7 @@
                         const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
                             const shortChar = (str.match(/[ijklfI1\!\^\[\]\{\}\~\`]/g) || []).length;
                             return Math.max(max, ((str.length * 2) - shortChar) / 2);
-                        }, 1)));
+                        }, 1)) * this.scale);
                         return {
                             fontSize: fontSize + 'vw',
                             fontFamily: this.font
