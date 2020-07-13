@@ -8,9 +8,11 @@
             html {
                 font-size: 10px;
             }
+
             body {
                 background-color: linen;
             }
+
             #app {
                 display: flex;
                 flex-direction: column;
@@ -18,10 +20,12 @@
                 width: 100vw;
                 height: 100vh;
             }
+
             #edit textarea {
                 width: 65vw;
                 height: 10vh;
             }
+
             #font {
                 width: 75vw;
                 display: flex;
@@ -29,34 +33,44 @@
                 align-items: center;
                 justify-content: space-evenly;
             }
+
             #print {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                font-family: 'KG Primary Dots Lined';
-                text-align: center;
             }
+
             #print p {
                 margin: 15px;
+                width: 100%;
             }
+
             @media print {
                 body * {
                     visibility: hidden;
                 }
+
                 #print,
                 #print * {
                     visibility: visible;
                 }
+
                 #app {
                     justify-content: center;
                 }
+
                 #print {
                     position: absolute;
+                    top: 0;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                }
+
+                #print p {
+                    page-break-inside: avoid;
                 }
             }
         </style>
@@ -83,12 +97,24 @@
                     <label for="dot-line-alt">Dots Lined Alt</label>
                 </div>
                 <div>
+                    <input type="radio" id="ta-left" value="left" v-model="textAlign">
+                    <label for="ta-left">Left</label>
+                </div>
+                <div>
+                    <input type="radio" id="ta-center" value="center" v-model="textAlign" selected>
+                    <label for="ta-center">Center</label>
+                </div>
+                <div>
+                    <input type="radio" id="ta-right" value="right" v-model="textAlign">
+                    <label for="ta-right">Right</label>
+                </div>
+                <div>
                     <input id="scale" v-model="scale">
-                    <label for="scale">Scale</label>
+                    <label for="scale">Font Size</label>
                 </div>
             </div>
-            <div id="print">
-                <p v-for="line in lines" :style="style">{{ line }}</p>
+            <div id="print" :style="printStyle">
+                <p v-for="line in lines" :style="lineStyle">{{ line }}</p>
             </div>
         </div>
         <script>
@@ -97,7 +123,8 @@
                 data: {
                     message: 'Edit Me!',
                     font: 'KG Primary Dots',
-                    scale: 1
+                    scale: 50,
+                    textAlign: 'center',
                 },
                 computed: {
                     // a computed getter
@@ -106,17 +133,27 @@
                         return this
                             .message
                             .split("\n")
+                            .map(l => l.trim())
                     },
-                    style: function () {
-                        const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
-                            const shortChar = (str.match(/[ijklfI1\!\^\[\]\{\}\~\`]/g) || []).length;
-                            return Math.max(max, ((str.length * 2) - shortChar) / 2);
-                        }, 1)) * this.scale);
+                    lineStyle: function () {
+                        // const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
+                        //     const shortChar = (str.match(/[ijklfI1\!\^\[\]\{\}\~\`]/g) || []).length;
+                        //     return Math.max(max, ((str.length * 2) - shortChar) / 2);
+                        // }, 1)) * this.scale);
                         return {
-                            fontSize: fontSize + 'vw',
+                            fontSize: this.scale + 'px',
                             fontFamily: this.font
                         }
-                    }
+                    },
+                    printStyle: function () {
+                        // const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
+                        //     const shortChar = (str.match(/[ijklfI1\!\^\[\]\{\}\~\`]/g) || []).length;
+                        //     return Math.max(max, ((str.length * 2) - shortChar) / 2);
+                        // }, 1)) * this.scale);
+                        return {
+                            textAlign: this.textAlign,
+                        }
+                    },
                 }
             })
         </script>
