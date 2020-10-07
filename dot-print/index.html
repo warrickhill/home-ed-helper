@@ -109,6 +109,10 @@
                     <label for="ta-right">Right</label>
                 </div>
                 <div>
+                    <button type="button" v-on:click="randomWord">Random word
+                    </button>
+                </div>
+                <div>
                     <input id="scale" v-model="scale">
                     <label for="scale">Font Size</label>
                 </div>
@@ -125,6 +129,11 @@
                     font: 'KG Primary Dots',
                     scale: 50,
                     textAlign: 'center',
+                    wordBank: [
+                        "Cat", "Dog", "Hat", "Pigeon",
+                        "House", "Computer", "Car", "Radio",
+                        "Mouse", "Tree", "Water", "Words"
+                    ]
                 },
                 computed: {
                     // a computed getter
@@ -154,8 +163,16 @@
                             textAlign: this.textAlign,
                         }
                     },
+                },
+                methods: {
+                    randomWord: function() {
+                        let word = app.wordBank[Math.floor(Math.random() * app.wordBank.length)];
+                        app.message = word
+                    }
                 }
             })
+
+
         </script>
     </body>
 </html>
