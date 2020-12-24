@@ -52,8 +52,14 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    position: relative;
 }
-
+#printarea img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
 #printarea p {
     margin: 0;
     width: 100%;
