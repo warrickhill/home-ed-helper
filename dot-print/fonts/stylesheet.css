@@ -1,10 +1,7 @@
 @font-face {
     font-family: 'KG Primary Dots Lined';
     src: url('KGPrimaryDotsLined.eot');
-    src: url('KGPrimaryDotsLined.eot?#iefix') format('embedded-opentype'),
-        url('KGPrimaryDotsLined.woff2') format('woff2'),
-        url('KGPrimaryDotsLined.woff') format('woff'),
-        url('KGPrimaryDotsLined.ttf') format('truetype');
+    src: url('KGPrimaryDotsLined.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -12,10 +9,7 @@
 @font-face {
     font-family: 'KG Primary Dots Lined Alt';
     src: url('KGPrimaryDotsLinedAlt.eot');
-    src: url('KGPrimaryDotsLinedAlt.eot?#iefix') format('embedded-opentype'),
-        url('KGPrimaryDotsLinedAlt.woff2') format('woff2'),
-        url('KGPrimaryDotsLinedAlt.woff') format('woff'),
-        url('KGPrimaryDotsLinedAlt.ttf') format('truetype');
+    src: url('KGPrimaryDotsLinedAlt.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -23,11 +17,83 @@
 @font-face {
     font-family: 'KG Primary Dots';
     src: url('KGPrimaryDots.eot');
-    src: url('KGPrimaryDots.eot?#iefix') format('embedded-opentype'),
-        url('KGPrimaryDots.woff2') format('woff2'),
-        url('KGPrimaryDots.woff') format('woff'),
-        url('KGPrimaryDots.ttf') format('truetype');
+    src: url('KGPrimaryDots.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Learning Curve Dashed';
+    src: url('KGPrimaryDots.eot');
+    src: url('LearningCurveDashed.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+html {
+    font-size: 10px;
+}
+
+body {
+    background-color: linen;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#edit textarea {
+    width: 65vw;
+    height: 10vh;
+}
+
+#font {
+    width: 75vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#print {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#print p {
+    margin: 15px;
+    width: 100%;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #print,
+    #print * {
+        visibility: visible;
+    }
+
+    #app {
+        justify-content: center;
+    }
+
+    #print {
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #print p {
+        page-break-inside: avoid;
+    }
+}

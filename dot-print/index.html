@@ -4,76 +4,6 @@
         <title>Welcome to Vue</title>
         <script src="https://unpkg.com/vue"></script>
         <link href="fonts/stylesheet.css" rel="stylesheet">
-        <style>
-            html {
-                font-size: 10px;
-            }
-
-            body {
-                background-color: linen;
-            }
-
-            #app {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100vw;
-                height: 100vh;
-            }
-
-            #edit textarea {
-                width: 65vw;
-                height: 10vh;
-            }
-
-            #font {
-                width: 75vw;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-evenly;
-            }
-
-            #print {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            #print p {
-                margin: 15px;
-                width: 100%;
-            }
-
-            @media print {
-                body * {
-                    visibility: hidden;
-                }
-
-                #print,
-                #print * {
-                    visibility: visible;
-                }
-
-                #app {
-                    justify-content: center;
-                }
-
-                #print {
-                    position: absolute;
-                    top: 0;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                #print p {
-                    page-break-inside: avoid;
-                }
-            }
-        </style>
     </head>
     <body>
         <div id="app">
@@ -95,6 +25,10 @@
                 <div>
                     <input type="radio" id="dot-line-alt" value="KG Primary Dots Lined Alt" v-model="font">
                     <label for="dot-line-alt">Dots Lined Alt</label>
+                </div>
+                <div>
+                    <input type="radio" id="dot-line-cursive" value="Learning Curve Dashed" v-model="font">
+                    <label for="dot-line-cursive">Dots lined Cursive</label>
                 </div>
                 <div>
                     <input type="radio" id="ta-left" value="left" v-model="textAlign">
