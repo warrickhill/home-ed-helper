@@ -1,31 +1,27 @@
 @font-face {
     font-family: 'KG Primary Dots Lined';
-    src: url('KGPrimaryDotsLined.eot');
-    src: url('KGPrimaryDotsLined.woff2') format('woff2');
+    src: url('fonts/KGPrimaryDotsLined.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'KG Primary Dots Lined Alt';
-    src: url('KGPrimaryDotsLinedAlt.eot');
-    src: url('KGPrimaryDotsLinedAlt.woff2') format('woff2');
+    src: url('fonts/KGPrimaryDotsLinedAlt.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'KG Primary Dots';
-    src: url('KGPrimaryDots.eot');
-    src: url('KGPrimaryDots.woff2') format('woff2');
+    src: url('fonts/KGPrimaryDots.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Learning Curve Dashed';
-    src: url('KGPrimaryDots.eot');
-    src: url('LearningCurveDashed.woff2') format('woff2');
+    src: url('fonts/LearningCurveDashed.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -69,31 +65,4 @@ body {
 #print p {
     margin: 15px;
     width: 100%;
-}
-
-@media print {
-    body * {
-        visibility: hidden;
-    }
-
-    #print,
-    #print * {
-        visibility: visible;
-    }
-
-    #app {
-        justify-content: center;
-    }
-
-    #print {
-        position: absolute;
-        top: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    #print p {
-        page-break-inside: avoid;
-    }
 }

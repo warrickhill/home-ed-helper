@@ -3,7 +3,8 @@
     <head>
         <title>Welcome to Vue</title>
         <script src="https://unpkg.com/vue"></script>
-        <link href="fonts/stylesheet.css" rel="stylesheet">
+        <link href="stylesheet.css" rel="stylesheet">
+        <link href="stylesheet.print.css" rel="stylesheet">
     </head>
     <body>
         <div id="app">
@@ -61,29 +62,19 @@
                     textAlign: 'center',
                 },
                 computed: {
-                    // a computed getter
                     lines: function () {
-                        // `this` points to the vm instance
                         return this
                             .message
                             .split("\n")
                             .map(l => l.trim())
                     },
                     lineStyle: function () {
-                        // const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
-                        //     const shortChar = (str.match(/[ijklfI1\!\^\[\]\{\}\~\`]/g) || []).length;
-                        //     return Math.max(max, ((str.length * 2) - shortChar) / 2);
-                        // }, 1)) * this.scale);
                         return {
                             fontSize: this.scale + 'px',
                             fontFamily: this.font
                         }
                     },
                     printStyle: function () {
-                        // const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
-                        //     const shortChar = (str.match(/[ijklfI1\!\^\[\]\{\}\~\`]/g) || []).length;
-                        //     return Math.max(max, ((str.length * 2) - shortChar) / 2);
-                        // }, 1)) * this.scale);
                         return {
                             textAlign: this.textAlign,
                         }
