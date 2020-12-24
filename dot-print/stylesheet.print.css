@@ -3,8 +3,8 @@
         visibility: hidden;
     }
 
-    #print,
-    #print * {
+    #printarea,
+    #printarea * {
         visibility: visible;
     }
 

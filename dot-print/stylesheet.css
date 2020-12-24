@@ -1,16 +1,3 @@
-@font-face {
-    font-family: 'KG Primary Dots Lined';
-    src: url('fonts/KGPrimaryDotsLined.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'KG Primary Dots Lined Alt';
-    src: url('fonts/KGPrimaryDotsLinedAlt.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
 
 @font-face {
     font-family: 'KG Primary Dots';
@@ -26,7 +13,6 @@
     font-style: normal;
 }
 html {
-    font-size: 10px;
     font-family: sans-serif;
 }
 
@@ -41,7 +27,9 @@ body {
     width: 100vw;
     height: 100vh;
 }
-
+#edit {
+    margin-bottom: 20px;
+}
 #edit textarea {
     width: 65vw;
     height: 10vh;
@@ -53,6 +41,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 20px;
 }
 
 #printarea {
@@ -68,4 +57,7 @@ body {
 #printarea p {
     margin: 0;
     width: 100%;
+}
+#instructions {
+    padding-inline-start: 20px;
 }
