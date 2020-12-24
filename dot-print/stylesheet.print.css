@@ -1,6 +1,7 @@
 @media print {
     body * {
         visibility: hidden;
+        zoom: 110%;
     }
 
     #printarea,
@@ -22,11 +23,20 @@
         align-items: center;
         justify-content: center;
     }
+    #printarea img {
+        bottom:0;
+        right: 0;
+    }
 
     #printarea p {
         position: absolute;
-        top: 35px;
         page-break-inside: avoid;
-        line-height: 120%!important;
+    }
+    #printarea p.large {
+        top: 24px;
+        font-size: 20px;
+        line-height: 110%!important;
+    }
+    #printarea p.small {
     }
 }

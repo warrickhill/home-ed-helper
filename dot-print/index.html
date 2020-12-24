@@ -53,7 +53,7 @@
             <div id="printarea" :style="printStyle">
                 <img v-if="this.scale === 'large'" alt="background lined paper" src="./images/handwriting-large.png" />
                 <img v-if="this.scale === 'small'" alt="background lined paper" src="./images/handwriting-small.png" />
-                <p v-for="line in lines" :style="lineStyle">{{ line }}</p>
+                <p :class="scale" v-for="line in lines" :style="lineStyle">{{ line }}</p>
             </div>
         </div>
         <script>
