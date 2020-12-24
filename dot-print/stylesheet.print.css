@@ -33,7 +33,7 @@
         page-break-inside: avoid;
     }
     #printarea p.large {
-        top: 24px;
+        top: 32px;
         font-size: 20px;
         line-height: 110%!important;
     }
