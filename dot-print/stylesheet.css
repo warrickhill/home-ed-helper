@@ -67,3 +67,11 @@ body {
 #instructions {
     padding-inline-start: 20px;
 }
+#sorrynotresponsive {
+    display: none;
+}
+@media (max-width: 550px) {
+    #sorrynotresponsive {
+        display: block;
+    }
+}
