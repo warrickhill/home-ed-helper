@@ -12,7 +12,7 @@
         justify-content: center;
     }
 
-    #print {
+    #printarea {
         position: absolute;
         top: 0;
         display: flex;
@@ -20,7 +20,7 @@
         justify-content: center;
     }
 
-    #print p {
+    #printarea p {
         page-break-inside: avoid;
     }
 }

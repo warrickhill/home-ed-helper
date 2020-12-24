@@ -15,40 +15,32 @@
                 <textarea v-model="message"></textarea>
             </div>
             <div id="font">
-                <div>
-                    <input type="radio" id="dot" value="KG Primary Dots" v-model="font" selected>
-                    <label for="dot">Dots</label>
-                </div>
-                <div>
-                    <input type="radio" id="dot-line" value="KG Primary Dots Lined" v-model="font">
-                    <label for="dot-line">Dots Lined</label>
-                </div>
-                <div>
-                    <input type="radio" id="dot-line-alt" value="KG Primary Dots Lined Alt" v-model="font">
-                    <label for="dot-line-alt">Dots Lined Alt</label>
-                </div>
-                <div>
-                    <input type="radio" id="dot-line-cursive" value="Learning Curve Dashed" v-model="font">
-                    <label for="dot-line-cursive">Dots lined Cursive</label>
-                </div>
-                <div>
-                    <input type="radio" id="ta-left" value="left" v-model="textAlign">
-                    <label for="ta-left">Left</label>
-                </div>
-                <div>
-                    <input type="radio" id="ta-center" value="center" v-model="textAlign" selected>
-                    <label for="ta-center">Center</label>
-                </div>
-                <div>
-                    <input type="radio" id="ta-right" value="right" v-model="textAlign">
-                    <label for="ta-right">Right</label>
-                </div>
-                <div>
-                    <input id="scale" v-model="scale">
+                <formgroup>
+                    <label for="dot">Dots: </label>
+                    <select v-model="font">
+                    <option id="dot" value="KG Primary Dots" selected>Primary</option>
+                    <option id="dot-line" value="KG Primary Dots Lined" >Dots Lined</option>
+                    <option id="dot-line-alt" value="KG Primary Dots Lined Alt" >Dots Lined Alt</option>
+                    <option id="dot-line-cursive" value="Learning Curve Dashed" >Dots lined Cursive</option>
+                </select>
+                </formgroup>
+                <formgroup>
+                    <label for="align">Align: </label>
+                    <select id="align" v-model="textAlign">
+                        <option id="to-left" value="left" selected>Left</option>
+                        <option id="to-center" value="center">Center</option>
+                        <option id="to-right" value="right">Right</option>
+                    </select>
+                </formgroup>
+                <formgroup>
                     <label for="scale">Font Size</label>
-                </div>
+                    <select id="scale" v-model="scale">
+                        <option id="large" value="large" selected>Large</option>
+                        <option id="small" value="small">Small</option>
+                    </select>
+                </formgroup>
             </div>
-            <div id="print" :style="printStyle">
+            <div id="printarea" :style="printStyle">
                 <p v-for="line in lines" :style="lineStyle">{{ line }}</p>
             </div>
         </div>
@@ -58,7 +50,7 @@
                 data: {
                     message: 'Edit Me!',
                     font: 'KG Primary Dots',
-                    scale: 50,
+                    scale: 'large',
                     textAlign: 'center',
                 },
                 computed: {
@@ -70,13 +62,14 @@
                     },
                     lineStyle: function () {
                         return {
-                            fontSize: this.scale + 'px',
+                            fontSize: this.scale === 'large' ?  `80px` : `30px`,
                             fontFamily: this.font
                         }
                     },
                     printStyle: function () {
                         return {
                             textAlign: this.textAlign,
+                            backgroundImage: this.scale === 'large' ? `url(${'./images/handwriting-large.png'})` : `url(${'./images/handwriting-small.png'})`
                         }
                     },
                 }
