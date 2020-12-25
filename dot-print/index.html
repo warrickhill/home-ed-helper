@@ -28,11 +28,15 @@
             </div>
             <div id="font">
                 <formgroup>
-                    <label for="dot">Dots: </label>
+                    <label for="dot">Font: </label>
                     <select v-model="font">
                     <option id="dot" value="KG Primary Dots" selected>Primary</option>
                     <option id="dot-line-cursive" value="Learning Curve Dashed" >Dots lined Cursive</option>
                 </select>
+                </formgroup>
+                <formgroup>
+                    <label for="lines">Show lines: </label>
+                    <input type="checkbox" v-model="showLines"/>
                 </formgroup>
                 <formgroup>
                     <label for="align">Align: </label>
@@ -55,8 +59,8 @@
             </div>
             <div id="printarea" :style="printStyle">
                 <p :class="scale" v-for="line in lines" :style="lineStyle">
-                    <img src="./images/handwriting-singleline-large.png" alt="lined background " v-if="scale === 'large'"/>
-                    <img src="./images/handwriting-singleline-small.png" alt="lined background " v-if="scale === 'small'" />
+                    <img src="./images/handwriting-singleline-large.png" alt="lined background " v-if="showLines === true && scale === 'large'"/>
+                    <img src="./images/handwriting-singleline-small.png" alt="lined background " v-if="showLines === true && scale === 'small'" />
                     {{ line }}
                 </p>
             </div>
@@ -69,6 +73,7 @@
                     font: 'KG Primary Dots',
                     scale: 'large',
                     textAlign: 'left',
+                    showLines: true
                 },
                 computed: {
                     lines: function () {
