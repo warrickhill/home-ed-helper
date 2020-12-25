@@ -54,8 +54,6 @@
                 </formgroup>
             </div>
             <div id="printarea" :style="printStyle">
-                <img v-if="this.scale === 'large'" alt="background lined paper" src="./images/handwriting-large.png" />
-                <img v-if="this.scale === 'small'" alt="background lined paper" src="./images/handwriting-small.png" />
                 <p :class="scale" v-for="line in lines" :style="lineStyle">{{ line }}</p>
             </div>
         </div>
@@ -80,6 +78,7 @@
                             fontSize: this.scale === 'large' ?  `152px` : `40px`,
                             fontFamily: this.font,
                             lineHeight: this.scale === 'large' ?  `1.3` : `1.2`,
+                            backgroundImage: this.scale === 'large' ? `url('./images/handwriting-singleline-large.png')` : `url('./images/handwriting-singleline-small.png')`
                         }
                     },
                     printStyle: function () {
