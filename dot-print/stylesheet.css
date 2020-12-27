@@ -52,6 +52,12 @@ body {
     background-size: cover;
     overflow: hidden;
 }
+#printarea__header {
+    display: none;
+}
+#printarea__header p {
+    font-size: 18px;
+}
 #printarea p {
     position: relative;
     margin: 0;

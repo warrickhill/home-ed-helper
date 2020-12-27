@@ -10,4 +10,23 @@
         top: 0;
         left: 0;
     }
+    #printarea__header {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: 100%;
+    }
+    #printarea__header p:first-child {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #printarea__header p:last-child {
+        position: absolute;
+        left: 400px;
+        top: 0;
+    }
+    #printarea p.small {
+        top: 40px;
+    }
 }

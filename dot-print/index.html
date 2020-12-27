@@ -58,6 +58,10 @@
                 </formgroup>
             </div>
             <div id="printarea" :style="printStyle">
+                <section id="printarea__header">
+                    <p>Student name: ______________________</p>
+                    <p>Date: ___________</p>
+                </section>
                 <p :class="scale" v-for="line in lines" :style="lineStyle">
                     <img src="./images/handwriting-singleline-large.png" alt="lined background " v-if="showLines === true && scale === 'large'"/>
                     <img src="./images/handwriting-singleline-small.png" alt="lined background " v-if="showLines === true && scale === 'small'" />
