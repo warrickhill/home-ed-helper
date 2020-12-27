@@ -1,45 +1,13 @@
 @media print {
     body * {
         visibility: hidden;
-        zoom: 110%;
     }
 
     #printarea,
     #printarea * {
         visibility: visible;
-    }
-
-    #app {
-        justify-content: center;
-    }
-
-    #printarea {
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    #printarea img {
-        bottom:0;
-        right: 0;
-    }
-
-    #printarea p {
-        position: absolute;
-        page-break-inside: avoid;
-    }
-    #printarea p.large {
-        top: 32px;
-        font-size: 20px;
-        line-height: 110%!important;
-    }
-    #printarea p.small {
-        top: 64px;
-        font-size:42px!important;
-        line-height: 104%!important;
     }
 }
