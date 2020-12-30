@@ -1,0 +1,91 @@
+
+@font-face {
+    font-family: 'KG Primary Dots';
+    src: url('fonts/KGPrimaryDots.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Learning Curve Dashed';
+    src: url('fonts/LearningCurveDashed.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+html {
+    font-family: sans-serif;
+}
+
+body {
+    background-color: linen;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+#edit {
+    margin-bottom: 20px;
+}
+#edit textarea {
+    width: 65vw;
+    height: 10vh;
+}
+
+#font {
+    width: 75vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+#printarea {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+#printarea__header {
+    display: none;
+}
+#printarea__header p {
+    font-size: 18px;
+}
+#printarea p {
+    position: relative;
+    margin: 0;
+    width: 100%;
+}
+#printarea p.large img {
+    margin-top: 35px;
+}
+#printarea p.small img {
+    margin-top: 8px;
+}
+#printarea img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#instructions {
+    padding-inline-start: 20px;
+}
+#sorrynotresponsive {
+    display: none;
+}
+#footer {
+    text-align: center;
+}
+@media (max-width: 550px) {
+    #sorrynotresponsive {
+        display: block;
+    }
+}

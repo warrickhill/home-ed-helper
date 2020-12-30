@@ -1,91 +1,103 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Welcome to Vue</title>
+        <title>Handwriting practice paper</title>
+        <meta name="description" content="Make full-page custom handwriting worksheets in seconds!"/>
         <script src="https://unpkg.com/vue"></script>
-        <link href="fonts/stylesheet.css" rel="stylesheet">
+        <link href="stylesheet.css" rel="stylesheet">
+        <link href="stylesheet.print.css" rel="stylesheet">
     </head>
     <body>
         <div id="app">
             <div id="header">
-                <h1>Dot Printer</h1>
+                <h1>Handwriting practice paper</h1>
+                <!--googleoff: index-->
+                <p id="sorrynotresponsive">Sorry! You'll need to use a device with a larger screen for this to work.</p>
+                <!--googleon: index-->
+                <p>Make full-page custom handwriting worksheets in seconds!</p>
+                <ul id="instructions">
+                    <li><strong>STEP 1:</strong> Select a writing style: <i>Primary(d'nealian)</i> or <i>cursive</i></li>
+                    <li><strong>STEP 2:</strong> Type your handwriting worksheet content and test how you want it to appear</li>
+                    <li><strong>STEP 3:</strong> Select your letter size</li>
+                    <li><strong>STEP 4:</strong> Click <i>Print</i> for a copy of your writing worksheet for immediate use
+                    </li>
+                </ul>
             </div>
             <div id="edit">
                 <textarea v-model="message"></textarea>
             </div>
             <div id="font">
-                <div>
-                    <input type="radio" id="dot" value="KG Primary Dots" v-model="font" selected>
-                    <label for="dot">Dots</label>
-                </div>
-                <div>
-                    <input type="radio" id="dot-line" value="KG Primary Dots Lined" v-model="font">
-                    <label for="dot-line">Dots Lined</label>
-                </div>
-                <div>
-                    <input type="radio" id="dot-line-alt" value="KG Primary Dots Lined Alt" v-model="font">
-                    <label for="dot-line-alt">Dots Lined Alt</label>
-                </div>
-                <div>
-                    <input type="radio" id="dot-line-cursive" value="Learning Curve Dashed" v-model="font">
-                    <label for="dot-line-cursive">Dots lined Cursive</label>
-                </div>
-                <div>
-                    <input type="radio" id="ta-left" value="left" v-model="textAlign">
-                    <label for="ta-left">Left</label>
-                </div>
-                <div>
-                    <input type="radio" id="ta-center" value="center" v-model="textAlign" selected>
-                    <label for="ta-center">Center</label>
-                </div>
-                <div>
-                    <input type="radio" id="ta-right" value="right" v-model="textAlign">
-                    <label for="ta-right">Right</label>
-                </div>
-                <div>
-                    <input id="scale" v-model="scale">
+                <formgroup>
+                    <label for="dot">Font: </label>
+                    <select v-model="font">
+                    <option id="dot" value="KG Primary Dots" selected>Primary</option>
+                    <option id="dot-line-cursive" value="Learning Curve Dashed" >Dots lined Cursive</option>
+                </select>
+                </formgroup>
+                <formgroup>
+                    <label for="lines">Show lines: </label>
+                    <input type="checkbox" v-model="showLines"/>
+                </formgroup>
+                <formgroup>
+                    <label for="align">Align: </label>
+                    <select id="align" v-model="textAlign">
+                        <option id="to-left" value="left" selected>Left</option>
+                        <option id="to-center" value="center">Center</option>
+                        <option id="to-right" value="right">Right</option>
+                    </select>
+                </formgroup>
+                <formgroup>
                     <label for="scale">Font Size</label>
-                </div>
+                    <select id="scale" v-model="scale">
+                        <option id="large" value="large" selected>Large</option>
+                        <option id="small" value="small">Small</option>
+                    </select>
+                </formgroup>
+                <formgroup>
+                    <button onClick={window.print()}>Print</button>
+                </formgroup>
             </div>
-            <div id="print" :style="printStyle">
-                <p v-for="line in lines" :style="lineStyle">{{ line }}</p>
+            <div id="printarea" :style="printStyle">
+                <section id="printarea__header">
+                    <p>Student name: ______________________</p>
+                    <p>Date: ___________</p>
+                </section>
+                <p :class="scale" v-for="line in lines" :style="lineStyle">
+                    <img src="./images/handwriting-singleline-large.png" alt="lined background " v-if="showLines === true && scale === 'large'"/>
+                    <img src="./images/handwriting-singleline-small.png" alt="lined background " v-if="showLines === true && scale === 'small'" />
+                    {{ line }}
+                </p>
             </div>
         </div>
+        <p id="footer"><small>This website doesn't use cookies, and it doesn't track you across the web. We use anonymous analytics to help us improve your experience.</small></p>
         <script>
             var app = new Vue({
                 el: '#app',
                 data: {
-                    message: 'Edit Me!',
+                    message: 'Edit me!',
                     font: 'KG Primary Dots',
-                    scale: 50,
-                    textAlign: 'center',
+                    scale: 'large',
+                    textAlign: 'left',
+                    showLines: true
                 },
                 computed: {
-                    // a computed getter
                     lines: function () {
-                        // `this` points to the vm instance
                         return this
                             .message
                             .split("\n")
                             .map(l => l.trim())
                     },
                     lineStyle: function () {
-                        // const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
-                        //     const shortChar = (str.match(/[ijklfI1\!\^\[\]\{\}\~\`]/g) || []).length;
-                        //     return Math.max(max, ((str.length * 2) - shortChar) / 2);
-                        // }, 1)) * this.scale);
                         return {
-                            fontSize: this.scale + 'px',
-                            fontFamily: this.font
+                            fontSize: this.scale === 'large' ?  `152px` : `40px`,
+                            fontFamily: this.font,
+                            lineHeight: this.scale === 'large' ?  `1.3` : `1.2`,
                         }
                     },
                     printStyle: function () {
-                        // const fontSize = Math.min(25, (100 / this.lines.reduce((max, str) => {
-                        //     const shortChar = (str.match(/[ijklfI1\!\^\[\]\{\}\~\`]/g) || []).length;
-                        //     return Math.max(max, ((str.length * 2) - shortChar) / 2);
-                        // }, 1)) * this.scale);
                         return {
                             textAlign: this.textAlign,
+                            paddingTop: this.scale === 'large' ? `40px` : `72px`
                         }
                     },
                 }
