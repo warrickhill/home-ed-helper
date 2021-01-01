@@ -24,7 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
 }
 #edit {
@@ -50,7 +50,6 @@ body {
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
 }
 #printarea__header {
     display: none;
