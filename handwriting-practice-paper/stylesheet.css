@@ -19,20 +19,17 @@ html {
 body {
     background-color: linen;
 }
-
 #app {
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 100vw;
-    height: 100vh;
 }
 #edit {
     margin-bottom: 20px;
 }
 #edit textarea {
     width: 65vw;
-    height: 10vh;
 }
 
 #font {
@@ -47,7 +44,6 @@ body {
 #printarea {
     width: 100%;
     max-width: 800px;
-    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
 }

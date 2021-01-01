@@ -1,6 +1,8 @@
 @media print {
     body * {
         visibility: hidden;
+        margin: 0;
+        padding: 0;
     }
 
     #printarea,
@@ -9,6 +11,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        float: left;
     }
     #printarea__header {
         display: flex;
