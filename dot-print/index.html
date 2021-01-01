@@ -8,12 +8,10 @@
         <link href="stylesheet.print.css" rel="stylesheet">
     </head>
     <body>
-        <div id="app">
+        <main id="app">
             <div id="header">
                 <h1>Handwriting practice paper</h1>
-                <!--googleoff: index-->
-                <p id="sorrynotresponsive">Sorry! You'll need to use a device with a larger screen for this to work.</p>
-                <!--googleon: index-->
+                <p id="sorrynotresponsive" data-nosnippet>Sorry! You'll need to use a device with a larger screen for this to work.</p>
                 <p>Make full-page custom handwriting worksheets in seconds!</p>
                 <ul id="instructions">
                     <li><strong>STEP 1:</strong> Select a writing style: <i>Primary(d'nealian)</i> or <i>cursive</i></li>
@@ -68,8 +66,28 @@
                     {{ line }}
                 </p>
             </div>
-        </div>
-        <p id="footer"><small>This website doesn't use cookies, and it doesn't track you across the web. We use anonymous analytics to help us improve your experience.</small></p>
+            <hr/>
+            <h2>Frequently asked questions</h2>
+            <ol>
+                <li>
+                    <strong>Q1. What is this?</strong>
+                    <i>This is a tool to help teachers and home educators to help their students and children to learn how to write.</i>
+                </li>
+                <li>
+                    <strong>Q2. How do I use it?</strong>
+                    <i>Enter the text you want your student or child to write into the text box provided. Click the "print" button, and your printer dialog will appear. We have configured the print version to contain an area for the student to write their name and the date on the printed sheet.</i>
+                </li>
+                <li>
+                    <strong>Q2. Is there a charge for this service?</strong>
+                    <i>No. This service is provided free of charge. We hope to make it pay for itself by the use of advertising in the future.</i>
+                </li>
+                <li>
+                    <strong>Q3. How do I contact you?</strong>
+                    <i>You can email homeedhelpers@gmail.com to send feature suggestions and bug reports. We will read your email but cannot guarantee a response.</i>
+                </li>
+            </ol>
+            <p id="footer"><small>This website doesn't use cookies, and it doesn't track you across the web. We use anonymous analytics to help us improve your experience.</small></p>
+        </main>
         <script>
             var app = new Vue({
                 el: '#app',
