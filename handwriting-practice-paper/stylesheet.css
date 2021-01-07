@@ -46,6 +46,8 @@ body {
     max-width: 800px;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    overflow: hidden;
 }
 #printarea__header {
     display: none;
@@ -58,17 +60,57 @@ body {
     margin: 0;
     width: 100%;
 }
-#printarea p.large img {
-    margin-top: 35px;
+#printarea span {
+    border-top: 1px solid yellow;
+    height: 0;
+    display: block;
 }
-#printarea p.small img {
-    margin-top: 8px;
-}
-#printarea img {
+#printarea #lines {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    bottom: 0;
+    right: 0;
+}
+#printarea span:first-child {
+    margin-top: 0 !important;
+}
+#printarea span:nth-child(3n + 1) {
+    border-top-color: #333333;
+    margin-top: 2px;
+}
+#printarea span:nth-child(3n + 2) {
+    border-top-style: dashed;
+    border-top-color: rgba(0, 0, 0, .25);
+    margin-top: calc(1.45em - 2px);
+}
+#printarea span:nth-child(3n + 3) {
+    border-top-color: #333333;
+    margin-top: calc(1.45em - 3px);
+}
+#printarea p.small {
+    line-height: 1.2;
+}
+#printarea p.large {
+    line-height: 1.3;
+}
+#printarea .small span:nth-child(3n + 2) {
+    border-top-style: dashed;
+    border-top-color: rgba(0, 0, 0, .25);
+    margin-top: calc(1.45em - 2px);
+}
+#printarea .small span:nth-child(3n + 3) {
+    border-top-color: #333333;
+    margin-top: calc(1.45em - 3px);
+}
+#printarea .large span:nth-child(3n + 2) {
+    border-top-style: dashed;
+    border-top-color: rgba(0, 0, 0, .25);
+    margin-top: calc(5.45em - 2px);
+}
+#printarea .large span:nth-child(3n + 3) {
+    border-top-color: #333333;
+    margin-top: calc(5.45em - 3px);
 }
 #instructions {
     padding-inline-start: 20px;

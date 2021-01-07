@@ -62,10 +62,22 @@
                     <p>Date: ___________</p>
                 </section>
                 <p :class="scale" v-for="line in lines" :style="lineStyle">
-                    <img src="./images/handwriting-singleline-large.png" alt="lined background " v-if="showLines === true && scale === 'large'"/>
-                    <img src="./images/handwriting-singleline-small.png" alt="lined background " v-if="showLines === true && scale === 'small'" />
                     {{ line }}
                 </p>
+                <div id="lines" :class="scale">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
             <hr/>
             <h2>Frequently asked questions</h2>
@@ -110,13 +122,11 @@
                         return {
                             fontSize: this.scale === 'large' ?  `152px` : `40px`,
                             fontFamily: this.font,
-                            lineHeight: this.scale === 'large' ?  `1.3` : `1.2`,
                         }
                     },
                     printStyle: function () {
                         return {
                             textAlign: this.textAlign,
-                            paddingTop: this.scale === 'large' ? `40px` : `72px`
                         }
                     },
                 }
